@@ -177,7 +177,6 @@ int _myexit(info_t *);
 int _mycd(info_t *);
 int _myhelp(info_t *);
 
-
 /* toem_builtin1.c */
 int _myhistory(info_t *);
 int _myalias(info_t *);
@@ -191,7 +190,6 @@ void sigintHandler(int);
 void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
-
 
 /* toem_environ.c */
 char *_getenv(info_t *, const char *);
@@ -233,5 +231,5 @@ int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
-
 #endif
+

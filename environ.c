@@ -81,7 +81,7 @@ int _myunsetenv(info_t *info)
  * Return: Always 0
  */
 int populate_env_list(info_t *info)
-
+{
         list_t *node = NULL;
         size_t i;
 
@@ -90,3 +90,4 @@ int populate_env_list(info_t *info)
         info->env = node;
         return (0);
 }
+
