@@ -1,7 +1,8 @@
-.TH Simple Shell 1 "February 2023"
-.SH NAME
-simple_shell - a simple shell man page
+.TH man 1 "February 2023" "1.0" "simple_shell man page"
 
+.SH NAME
+simple_shell - a simple shell command-line interpreter for Unix-like operating systems
+ 
 .SH SYNOPSIS
 Simple Shell[name]
 
