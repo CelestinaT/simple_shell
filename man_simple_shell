@@ -36,3 +36,4 @@ The exit status of simple_shell is the value returned by the waitpid system call
 
 .SH AUTHOR
 Written by Celestina Odebunmi and Lawrence Ikhidero
+
