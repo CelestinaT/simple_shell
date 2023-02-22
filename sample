@@ -1,0 +1,40 @@
+.TH Simple Shell 1 "February 2023"
+.SH NAME
+simple_shell - a simple shell man page
+
+.SH SYNOPSIS
+Simple Shell[name]
+
+.SH DESCRIPTION
+The simple_shell program is a shell compatible command language interpreter that executes commands read from the standard input or from a file.
+
+.SH ARGUMENTS
+If arguments remain after option processing, the first argument is assumed to be the name of a file containing shell commands. Simple_shell reads and executes commands from this file, then exits. The exit status of simple_shell is the exit status of the last command executed in the script. If no commands are executed, the exit status is 0. If the file is not found in the current directory, the shell searches the directories in PATH for the script.
+
+.SH INVOCATION
+When simple_shell is started, it is executed in either interactive or non-interactive mode. In interactive mode, the prompt is displayed as "^-^" and the user can enter commands. In non-interactive mode, a command can be specified as a command-line argument.
+
+.SH DEFINITIONS
+Throughout this document, the following definitions are used:
+"blank": A space or tab.
+"word": A sequence of characters considered as a single unit by the shell. Also known as a "token".
+"name": A word consisting only of alphanumeric characters and underscores, and beginning with an alphabetic character or an underscore. Also known as an "identifier".
+"control operator": A token that performs a control function. It is one of the following symbols: || and &&.
+
+.SH COMMAND EXECUTION
+After a command has been split into words, if it results in a simple command and an optional list of arguments, the following actions are taken:
+If the command name contains no slashes, the shell attempts to locate it. If there exists a shell function by that name, that function is invoked. If the name does not match a function, the shell searches for it in the list of shell builtins. If a match is found, that builtin is invoked.
+If the name is neither a shell function nor a builtin, and contains no slashes, simple_shell searches each element of the PATH for a directory containing an executable file by that name. A full search of the directories in PATH is performed only if the command is not found in the hash table. If the search is unsuccessful, the shell searches for a defined shell function named "command not found". If that function exists, it is invoked with the original command and the original command's arguments as its arguments, and the function's exit status becomes the exit status of the shell. If that function is not defined, the shell prints an error message and returns an exit status of 127.
+If the search is successful, or if the command name contains one or more slashes, the shell executes the named program in a separate execution environment. Argument 0 is set to the name given, and the remaining arguments to the command are set to the arguments given, if any.
+
+.SH ENVIRONMENT
+Simple_shell takes a copy of the environment of the parent process where it was executed. The environment is an array of strings containing the variables in the format "name=value".
+
+.SH EXIT STATUS
+The exit status of simple_shell is the value returned by the waitpid system call or equivalent function. A command which exits with a zero exit status has succeeded. An exit status of zero indicates success. A non-zero exit status indicates failure if a command is not found.
+
+.SH AUTHOR
+Written by Celestina Odebunmi and Lawrence Ikhidero
+
+bp
+ghp_bpcStCNcKYXNaMQsTV9cJulqPOlF48hL0li9Jv
